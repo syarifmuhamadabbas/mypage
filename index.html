@@ -6,56 +6,71 @@
     <title>Link saya</title>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body class="min-h-screen bg-slate-100 text-slate-700">
-    <div class="mx-auto max-w-md px-4 py-10">
-        <header class="flex flex-col items-center text-center">
-            <img src="avatar.svg" alt="Foto profile Abbas" class="h-24 w-24 rounded-full shadow ring-4 ring-white">
-            <h1 class="mt-4 text-2xl font-bold">halo, namaku Abbas</h1>
-            <p class="mt-1 text-sm text-slate-500">Mahasiswa IT - Belajar web development</p>
-        </header>
-        
-        <nav aria-label="Media sosial" class="mt-6">
-        <ul class="flex justify-center gap-3">
-            <li><a href="https://github.com/syarifmuhamadabbas" aria-label="GitHub"
-                class="flex h-11 w-11 items-center justify-center rounded-full bg-white text-xl shadow-sm ring-1 ring-slate-200">🐙</a>
-            </li>
-            <li><a href="https://instagram.com/just.abbxs_" aria-label="Instagram"
-                class="flex h-11 w-11 items-center justify-center rounded-full bg-white text-xl shadow-sm ring-1 ring-slate-200">📸</a>
-            </li>
-            <li><a href="https://linkedin.com/in/username" aria-label="LinkedIn"
-         class="flex h-11 w-11 items-center justify-center rounded-full bg-white text-xl shadow-sm ring-1 ring-slate-200">💼</a>
-            </li>
-        </ul>
 
-    </nav>
+    <style type="text/tailwindcss">
+    @custom-variant dark (&:where(.dark, .dark *));
+    </style>
+    <script>
+    // Dijalankan SEBELUM halaman tampil, supaya tidak "berkedip" terang dulu.
+    try {
+        const savedTheme = localStorage.getItem("linkpage:theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        // Pakai pilihan tersimpan; kalau belum ada, ikuti pengaturan sistem
+        if (savedTheme === "dark" || (savedTheme === null && prefersDark)) {
+        document.documentElement.classList.add("dark");
+        }
+    } catch (error) {
+        // localStorage bisa diblokir di beberapa browser; abaikan saja
+    }
+    </script>
+</head>
+<body class="min-h-screen bg-slate-100 text-slate-700 dark:bg-slate-950 dark:text-slate-100">
+    <button id="theme-toggle" type="button" aria-label="Ganti ke mode gelap"
+        class="fixed right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white text-xl shadow-sm ring-1 ring-slate-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-slate-900 dark:ring-slate-800 dark:focus-visible:outline-indigo-400">🌙</button>
+    <div class="mx-auto max-w-md px-4 py-10 md:max-w-xl md:py-16 lg:grid lg:max-w-5xl lg:grid-cols-2 lg:items-start lg:gap-16">
+        <div class="lg:sticky lg:top-16">
+            <header class="flex flex-col items-center text-center">
+                <img src="avatar.svg" alt="Foto profile Abbas" class="h-24 w-24 rounded-full shadow ring-4 ring-white md:h-28 md:w-28 dark:ring-slate-800">
+                <h1 class="mt-4 text-2xl font-bold md:text-3xl">halo, namaku Abbas</h1>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Mahasiswa IT - Belajar Web Development</p>
+            </header>
+            
+            <nav aria-label="Media sosial" class="mt-6">
+            <ul class="flex justify-center gap-3">
+                <li><a href="https://github.com/syarifmuhamadabbas" aria-label="GitHub"
+                    class="flex h-11 w-11 items-center justify-center rounded-full bg-white text-xl shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800 duration-200 motion-reduce:transition-none motion-reduce:hover:translate-y-0">🐙</a>
+                </li>
+                <li><a href="https://instagram.com/just.abbxs_" aria-label="Instagram"
+                    class="flex h-11 w-11 items-center justify-center rounded-full bg-white text-xl shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800 duration-200 motion-reduce:transition-none motion-reduce:hover:translate-y-0">📸</a>
+                </li>
+                <li><a href="https://linkedin.com/in/username" aria-label="LinkedIn"
+            class="flex h-11 w-11 items-center justify-center rounded-full bg-white text-xl shadow-sm ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800 duration-200 motion-reduce:transition-none motion-reduce:hover:translate-y-0">💼</a>
+                </li>
+            </ul>
+
+            </nav>
+        </div>
 
         <main>
-            <h2 class="mt-8 text-sm font-semibold uppercase tracking-wide text-slate-500">Link Saya</h2>
-            <ul class="mt-3 space-y-3">
-                <li><a href="https://example.com/portfolio"
-                    class="flex items-center justify-center gap-3 rounded-xl bg-white px-5 py-4 font-medium shadow-sm ring-1 ring-slate-200
-                    transition hover:-translate-y-0.5 hover:bg-slate-900 hover:text-white hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                    <span aria-hidden="true">🎨</span>Portofolio</a></li>
-                <li><a href="https://github.com/syarifmuhamadabbas/link-page"
-                    class="flex items-center justify-center gap-3 rounded-xl bg-white px-5 py-4 font-medium shadow-sm ring-1 ring-slate-200
-                    transition hover:-translate-y-0.5 hover:bg-slate-900 hover:text-white hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                    <span aria-hidden="true">🎨</span>Link Page Ini</a></li>
-                <li><a href="https://example.com/catatan"
-                    class="flex items-center justify-center gap-3 rounded-xl bg-white px-5 py-4 font-medium shadow-sm ring-1 ring-slate-200
-                    transition hover:-translate-y-0.5 hover:bg-slate-900 hover:text-white hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                    <span aria-hidden="true">📝</span>Catatan Kursus</a></li>
-                <li><a href="mailto:syarifmuhamad27316@gmail.com"
-                    class="flex items-center justify-center gap-3 rounded-xl bg-white px-5 py-4 font-medium shadow-sm ring-1 ring-slate-200
-                    transition hover:-translate-y-0.5 hover:bg-slate-900 hover:text-white hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                    <span aria-hidden="true">✉️</span>Email</a></li>
-            </ul>
+            <h2 class="mt-8 text-sm font-semibold uppercase tracking-wide text-slate-500 lg:mt-0 dark:text-slate-400">Link Saya</h2>
+            <div id="filter-tabs" class="mt-3 flex flex-wrap gap-2">
+                <button type="button" data-category="semua" aria-pressed="true"
+                    class="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-slate-700 ring-1 ring-slate-200 aria-pressed:bg-indigo-600 aria-pressed:text-white aria-pressed:ring-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-800 dark:focus-visible:outline-indigo-400">Semua</button>
+                <button type="button" data-category="sosmed" aria-pressed="false"
+                        class="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-slate-700 ring-1 ring-slate-200 aria-pressed:bg-indigo-600 aria-pressed:text-white aria-pressed:ring-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-800 dark:focus-visible:outline-indigo-400">Sosmed</button>
+                <button type="button" data-category="project" aria-pressed="false"
+                        class="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-slate-700 ring-1 ring-slate-200 aria-pressed:bg-indigo-600 aria-pressed:text-white aria-pressed:ring-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-800 dark:focus-visible:outline-indigo-400">Project</button>
+                <button type="button" data-category="kontak" aria-pressed="false"
+                        class="rounded-full bg-white px-4 py-1.5 text-sm font-medium text-slate-700 ring-1 ring-slate-200 aria-pressed:bg-indigo-600 aria-pressed:text-white aria-pressed:ring-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-800 dark:focus-visible:outline-indigo-400">Kontak</button>
+            </div>
+            <ul id="link-list" class="mt-4 space-y-3"></ul>
         </main>
-        <footer class="mt-10 text-center text-xs text-slate-400">
+        <footer class="mt-10 text-center text-xs text-slate-400 lg:col-span-2 dark:text-slate-500">
             <p>&copy; 2026 Syarif Muhamad Abbas</p>
         </footer>
     </div>
 
-
+    <script src="script.js"></script>
 </body>
 </html>
